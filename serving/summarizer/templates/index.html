@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<title>Summarizer</title>
+</head>
+<body style="margin: 40px; font-family: sans-serif;">
+<h1>Summarizer</h1>
+<p>Joe Zeimen</p>
+<p><a href="https://github.com/jzeimen/springboard-capstone" target="_blank">Github</a></p>
+<p>To summarize an article, paste the contents of hte article in the box below. 
+To understand more how it works check out the github repo. </p>
+<textarea name="article" form="article_input" style="height: 500px; width: 500px;">
+{%if article%}{{article}}
+{%else%}Enter text here...
+{%endif%}
+</textarea>
+<form action="/" id="article_input" method="post">
+<input type="submit"/>
+</form>
+{%if summary%}
+    <h3> Summary </h3>
+    <p> {{summary}} </p>
+{%endif%}
+
+</body>
+</html>
