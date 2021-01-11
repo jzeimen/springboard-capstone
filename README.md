@@ -58,6 +58,8 @@ The two vectors are concatenated and are fed through a dense NN to get to a fina
 
 The output of course is never exactly 0 or 1, so this can be treated as a score. To do the prediction for the best summary the top N scoring sentences can be used. 
 
+[The training notebook has more description.](data/Train.ipynb)
+
 
 ## Results
 To have something to compare against I compare the top N scoring sentences against the first N sentences in the article. I use the ROUGE F1 score to do this. 
@@ -80,7 +82,7 @@ To serve the model there is a simple flask application with a simple form to pas
 The model file lives in S3 so that if a new version of the model file needs to be deployed it can be done with no downtime. Upon container startup it will look at the `S3_BUCKET` and `MODEL_OBJECT` environment variables. This means you can start a new docker container with different environment variables and once it is ready turn off the old container that pointed to a different model. There is also a hard coded reference to the first model of this project incase this is not set. 
 
 ### Run the serving app locally
-Assuming you have docker installed all you need to do is run this from the `serve` directory. This will build and run the docker container. Upon startup this will download a 2GB file so it will take a while to startup. It will also print lots of messages while TensorFlow is loading the model. 
+Assuming you have docker installed all you need to do is run this from the `serving` directory. This will build and run the docker container. Upon startup this will download a 2GB file so it will take a while to startup. It will also print lots of messages while TensorFlow is loading the model. 
 
 ```
 docker build -t summarizer . && docker run -it --rm  -p 5000:80 summarizer
@@ -159,5 +161,5 @@ To run the tests for the web app. 1st download the [model file](https://drive.go
 
 Then make a directory called model in summarizer called `model`. Move the file that was just downloaded here and extract it. 
 
-Then from the serve directory run `python -B -m unittest test/*`
+Then from the `serving` directory run `python -B -m unittest test/*`
 
