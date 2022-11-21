@@ -8,7 +8,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'flask==1.1.2',
-        'tensorflow==2.2.0',
+        'tensorflow==2.9.3',
         'spacy==2.3.2',
         'pandas==1.0.5',
         'rouge-score==0.0.4',
