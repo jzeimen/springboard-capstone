@@ -7,7 +7,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'flask==1.1.2',
+        'flask==2.3.2',
         'tensorflow==2.2.0',
         'spacy==2.3.2',
         'pandas==1.0.5',
